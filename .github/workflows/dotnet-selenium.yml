@@ -13,10 +13,10 @@ on:
      - Negative
      required: true
 
+env:
+  ALLURE-RESULTS: AF/bin/Debug/net8.0/allure-results
 jobs:
-
   build:
-
     strategy:
       matrix:
         configuration: [Debug]
@@ -29,6 +29,24 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget apt-transport-https
+        sudo apt-get install -y fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libcairo2 libcups2 libdrm2 libgbm1 libgtk-3-0 libpango-1.0-0 libvulkan1 libx11-6 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxkbcommon0 libxrandr2 xdg-utils libnspr4 libnss3
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        sudo apt-get -f install
+        
+    - name: Collect environment information
+      id: env_info
+      run: |
+        echo "environment=${{ github.event.inputs.tags }}" >> environment.properties
+        echo "url=${{ vars.URL }}" >> environment.properties
+        echo "os_platform=$(uname -s)" >> environment.properties
+        echo "os_version=$(uname -v)" >> environment.properties
+        echo "chrome_version=$(google-chrome --version)" >> environment.properties
+          
     # Install the .NET Core workload
     - name: Install .NET Core
       uses: actions/setup-dotnet@v4
@@ -43,7 +61,7 @@ jobs:
     - name: Execute Negative Selenium tests
       if:  github.event.inputs.test_category == 'Negative'
       run: dotnet test --filter Category=Negative
-
+    
     - name: Load test report history
       uses: actions/checkout@v4
       if: always()
@@ -51,6 +69,10 @@ jobs:
       with:
           ref: gh-pages
           path: gh-pages
+          
+    - name: Put environment information in file
+      if: always()
+      run: cp environment.properties ${{ALLURE-RESULTS}}/environment.properties
 
     - name: Build test report
       uses: simple-elf/allure-report-action@v1.7
@@ -58,7 +80,7 @@ jobs:
       with:
           gh_pages: gh-pages
           allure_history: allure-history
-          allure_results: AF/bin/Debug/net8.0/allure-results
+          allure_results:  ${{ALLURE-RESULTS}}
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v4
