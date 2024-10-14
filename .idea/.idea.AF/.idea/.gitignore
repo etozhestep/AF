@@ -19,3 +19,6 @@
 /.idea.AF
 /config
 /netcoreapp3.1
+/Debug
+/Release
+
