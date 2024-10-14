@@ -18,14 +18,6 @@ public abstract class Configurator
         var appSettings = JsonConvert.DeserializeObject<AppSettings>(appSettingsText) ??
                           throw new FileNotFoundException();
 
-        if (!string.IsNullOrEmpty(appSettings.Url)) return appSettings;
-        appSettings.Url = Environment.GetEnvironmentVariable("URL")
-                          ?? throw new Exception("URL is empty");
-        appSettings.Email = Environment.GetEnvironmentVariable("EMAIL")
-                            ?? throw new Exception("Email is empty");
-        appSettings.Password = Environment.GetEnvironmentVariable("PASSWORD")
-                               ?? throw new Exception("Password is empty");
-
         return appSettings;
     }
 }
