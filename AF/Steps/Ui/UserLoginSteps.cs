@@ -36,13 +36,13 @@ public class UserLoginSteps(IWebDriver driver) : BaseStep(driver)
     }
 
     [AllureStep("Login with valid credentials")]
-    public SettingsPage LoginWithValidCredentials()
+    public LaunchesPage LoginWithValidCredentials()
     {
         Logger.Info("Logging with valid credentials...");
         var username = Configurator.ReadConfiguration().Email;
         var password = Configurator.ReadConfiguration().Password;
         Login(username, password);
-        return new SettingsPage(Driver, true);
+        return new LaunchesPage(Driver, true);
     }
 
     [AllureStep("Login with invalid credentials")]
@@ -56,14 +56,14 @@ public class UserLoginSteps(IWebDriver driver) : BaseStep(driver)
     public string LoginWithEmptyEmail()
     {
         Login("", "password");
-        return LoginPage.Notification.Text;
+        return LoginPage.EmailFieldAlert.Text;
     }
 
     [AllureStep("Login with empty password")]
     public string LoginWithEmptyPassword()
     {
         Login("username", "");
-        return LoginPage.Notification.Text;
+        return LoginPage.PasswordFieldAlert.Text;
     }
 
     [AllureStep("Login with empty credentials")]
@@ -77,8 +77,8 @@ public class UserLoginSteps(IWebDriver driver) : BaseStep(driver)
     public LoginPage SignOut()
     {
         Logger.Info("Signing out...");
-        SettingsPage.SideBar.OpenUserPopup();
-        SettingsPage.UserPopup.LogoutButton.Click();
+        LaunchesPage.SideBar.OpenUserPopup();
+        LaunchesPage.UserPopup.LogoutButton.Click();
         return new LoginPage(Driver, true);
     }
 }

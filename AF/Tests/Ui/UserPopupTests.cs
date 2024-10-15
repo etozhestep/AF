@@ -13,23 +13,23 @@ public class UserPopupTests : BaseTest
     [Test]
     public void UserPopup_OpenPopup_PopupIsDisplayed()
     {
-        SettingsPage.SideBar.OpenUserPopup();
+        LaunchesPage.SideBar.OpenUserPopup();
 
-        Assert.That(SettingsPage.UserPopup.IsDisplayed, Is.True, "User popup is not displayed");
+        Assert.That(LaunchesPage.UserPopup.IsDisplayed, Is.True, "User popup is not displayed");
     }
 
     [Test]
     public void UserPopup_CheckPopupButton_AllButtonsDisplayed()
     {
-        SettingsPage.SideBar.OpenUserPopup();
+        LaunchesPage.SideBar.OpenUserPopup();
 
         Assert.Multiple(() =>
         {
-            Assert.That(SettingsPage.UserPopup.ProfileButton.IsDisplayed, Is.True,
+            Assert.That(LaunchesPage.UserPopup.ProfileButton.IsDisplayed, Is.True,
                 "Profile button is not displayed");
-            Assert.That(SettingsPage.UserPopup.ApiButton.IsDisplayed, Is.True,
+            Assert.That(LaunchesPage.UserPopup.ApiButton.IsDisplayed, Is.True,
                 "API button is not displayed");
-            Assert.That(SettingsPage.UserPopup.LogoutButton.IsDisplayed, Is.True,
+            Assert.That(LaunchesPage.UserPopup.LogoutButton.IsDisplayed, Is.True,
                 "Logout button is not displayed");
         });
     }
@@ -38,8 +38,8 @@ public class UserPopupTests : BaseTest
     public void UserPopup_CheckProfileButton_ProfilePageOpened()
     {
         const string expectedProfileTitle = "User profile";
-        SettingsPage.SideBar.OpenUserPopup();
-        SettingsPage.UserPopup.ProfileButton.Click();
+        LaunchesPage.SideBar.OpenUserPopup();
+        LaunchesPage.UserPopup.ProfileButton.Click();
         var actualProfileTitle = ProfilePage.ProfileTitle.Text;
 
         Assert.Multiple(() =>

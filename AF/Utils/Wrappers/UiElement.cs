@@ -81,20 +81,22 @@ public class UiElement : IWebElement
     /// <param name="text"></param>
     public void SendKeys(string? text)
     {
+        var elementValue = _element.GetAttribute("value");
+        if (elementValue.Equals(text))
+            return;
         try
         {
             Clear();
-            Actions
-                .MoveToElement(_element)
-                .Click()
-                .SendKeys(text)
-                .Build()
-                .Perform();
+            _element.SendKeys(text);
         }
         catch (Exception)
         {
             Clear();
-            _element.SendKeys(text);
+            Actions
+                .MoveToElement(_element)
+                .SendKeys(text)
+                .Build()
+                .Perform();
         }
     }
 

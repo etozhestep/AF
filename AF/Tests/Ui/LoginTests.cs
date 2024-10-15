@@ -27,7 +27,7 @@ public class LoginTests : BaseTest
     [Category("Positive")]
     [AllureDescription("Login with valid credentials")]
     [Author("ASciapaniuk")]
-    public void Login_ValidCredentials_HomePageOpened()
+    public void Login_ValidCredentials_LaunchesPageOpened()
     {
         Assert.That(UserLoginSteps.LoginWithValidCredentials().PageTitle.IsDisplayed,
             "Page title is not displayed");
@@ -123,7 +123,7 @@ public class LoginTests : BaseTest
     [Category("Positive")]
     [AllureDescription("Log out from header popup. Expected OKTA page with URL: https://coxauto.okta.com opened.")]
     [Author("ASciapaniuk")]
-    public void Login_LogoutFromHeader_OktaPageOpened()
+    public void Login_LogoutFromUserPopup_LoginPageOpened()
     {
         const string expectedEndpoint = "login";
 

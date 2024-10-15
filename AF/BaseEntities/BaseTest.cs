@@ -19,10 +19,10 @@ public class BaseTest : BaseApiTest
 {
     private IWebDriver _driver;
     protected CommonSteps CommonSteps;
+    protected LaunchesPage LaunchesPage;
     protected LoginPage LoginPage;
     protected NavigationSteps NavigationSteps;
     protected ProfilePage ProfilePage;
-    protected SettingsPage SettingsPage;
     protected UserLoginSteps UserLoginSteps;
 
 
@@ -34,7 +34,7 @@ public class BaseTest : BaseApiTest
         UserLoginSteps = new UserLoginSteps(_driver);
         NavigationSteps = new NavigationSteps(_driver);
         LoginPage = new LoginPage(_driver);
-        SettingsPage = new SettingsPage(_driver);
+        LaunchesPage = new LaunchesPage(_driver);
         CommonSteps = new CommonSteps(_driver);
         ProfilePage = new ProfilePage(_driver);
     }

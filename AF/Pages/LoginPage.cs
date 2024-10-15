@@ -11,7 +11,7 @@ public class LoginPage(IWebDriver driver, bool evaluateStatus = false, bool open
     private static readonly string Endpoint = string.Empty;
     private readonly By _emailFieldXpath = By.XPath("//input[@placeholder='Login']");
     private readonly By _errorNotificationXpath = By.XPath("//*[contains(text(),'Bad credentials')]");
-    private readonly By _fieldAlertXpath = By.XPath("/ancestor::div[contains(@class,'error')]");
+    private readonly By _fieldAlertXpath = By.XPath("/following::span[contains(@class,'error')]");
     private readonly By _passwordFieldXpath = By.XPath("//input[@placeholder='Password']");
     private readonly By _signInButtonXpath = By.XPath("//button[@type='submit']");
 
