@@ -4,14 +4,6 @@ on:
   schedule:
     - cron: '55 13 * * *'
   workflow_dispatch:
-    inputs:
-      test_category:
-        description: 'Select Test Category'
-        type: choice
-        options:
-          - Positive
-          - Negative
-        required: true
 
 env:
   ALLURE_RESULTS: "AF/bin/Debug/net8.0/allure-results"
@@ -47,12 +39,7 @@ jobs:
       
       # Execute all unit tests in the solution
       - name: Execute Positive Selenium tests
-        if:  github.event.inputs.test_category == 'Positive'
-        run: dotnet test --filter Category=Positive
-
-      - name: Execute Negative Selenium tests
-        if:  github.event.inputs.test_category == 'Negative'
-        run: dotnet test --filter Category=Negative
+        run: dotnet test
 
       - name: Load test report history
         uses: actions/checkout@v4

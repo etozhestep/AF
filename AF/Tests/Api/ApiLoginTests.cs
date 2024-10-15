@@ -18,7 +18,7 @@ public class ApiLoginTests : BaseApiTest
     [Test]
     [AllureDescription("Authenticate user though API")]
     [Category("Positive")]
-    public void AuthenticateUserTest()
+    public void LoginApi_AuthenticateUser_UnauthorizedStatusCodeReturns()
     {
         var user = new UserModel.UserBuilder()
             .WithEmail(Configurator.ReadConfiguration().Email)
@@ -37,7 +37,7 @@ public class ApiLoginTests : BaseApiTest
     [Test]
     [AllureDescription("Authenticate user with invalid credentials though API")]
     [Category("Negative")]
-    public void AuthenticateUserWithInvalidCredentialsTest()
+    public void LoginApi_AuthenticateUserWithInvalidCredentials_UnauthorizedStatusCodeReturns()
     {
         var user = new UserModel.UserBuilder()
             .WithEmail("test")
@@ -52,7 +52,7 @@ public class ApiLoginTests : BaseApiTest
     [Test]
     [AllureDescription("Authenticate user without email though API")]
     [Category("Negative")]
-    public void AuthenticateUserWithoutUsernameTest()
+    public void LoginAi_AuthenticateUserWithoutUsername_UnauthorizedStatusCodeReturns()
     {
         var user = new UserModel.UserBuilder()
             .WithPassword(Configurator.ReadConfiguration().Password)
@@ -66,7 +66,7 @@ public class ApiLoginTests : BaseApiTest
     [Test]
     [AllureDescription("Authenticate user without password though API")]
     [Category("Negative")]
-    public void AuthenticateUserWithoutPasswordTest()
+    public void LoginApi_AuthenticateUserWithoutPasswordTest_UnauthorizedStatusCodeReturns()
     {
         var user = new UserModel.UserBuilder()
             .WithEmail(Configurator.ReadConfiguration().Email)
