@@ -33,7 +33,6 @@ public class DriverFactory
         chromeOptions.AddArgument("--disable-search-engine-choice-screen");
         chromeOptions.AddArgument("--remote-debugging-pipe");
         chromeOptions.AddArgument("--ignore-certificate-errors");
-        chromeOptions.AddArgument("--remote-debugging-port=9222");
         chromeOptions.AddArgument("--headless");
 
 
