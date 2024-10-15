@@ -15,12 +15,11 @@ public class DriverFactory
     ///     Create a new instance of the Chrome driver with specific options.
     /// </summary>
     /// <returns></returns>
-    public static IWebDriver GetChromeDriver(string downloadDirectory)
+    public static IWebDriver GetChromeDriver()
     {
         var chromeOptions = new ChromeOptions();
         chromeOptions.AddArgument("--incognito");
         chromeOptions.AddArgument("--no-sandbox");
-        chromeOptions.AddAdditionalOption("useAutomationExtension", false);
         chromeOptions.AddArgument("--start-maximized");
         chromeOptions.AddArgument("--disable-notifications");
         chromeOptions.AddArgument("--disable-popup-blocking");
@@ -36,24 +35,7 @@ public class DriverFactory
         chromeOptions.AddArgument("--ignore-certificate-errors");
         chromeOptions.AddArgument("--remote-debugging-port=9222");
         chromeOptions.AddArgument("--headless");
-        chromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
-        chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-        chromeOptions.AddUserProfilePreference("download.directory_upgrade", true);
-        chromeOptions.AddUserProfilePreference("safebrowsing.enabled", true);
-        chromeOptions.AddUserProfilePreference("profile.default_content_settings.popups", 0);
-        chromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
-        chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.automatic_downloads", 1);
-        chromeOptions.AddUserProfilePreference("profile.managed_default_content_settings.popups", 0);
-        chromeOptions.AddUserProfilePreference("download.extensions_to_open",
-            "application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 
-        const string mimeTypes = "application/vnd.ms-excel,application" +
-                                 "/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        chromeOptions.AddUserProfilePreference("profile.default_content_settings.popups", 0);
-        chromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
-        chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.automatic_downloads", 1);
-        chromeOptions.AddUserProfilePreference("profile.managed_default_content_settings.popups", 0);
-        chromeOptions.AddUserProfilePreference("download.extensions_to_open", mimeTypes);
 
         var driverPath = new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
         return new ChromeDriver(driverPath, chromeOptions);

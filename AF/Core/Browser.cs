@@ -14,18 +14,12 @@ public class Browser
 
     public Browser()
     {
-        var downloadPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!,
-            "Resources");
-
-        if (!Path.Exists(downloadPath))
-            Directory.CreateDirectory(downloadPath);
-
         NLogConfig.Config();
         var browserType = Configurator.ReadConfiguration().BrowserType?.ToLower();
 
         Driver = browserType switch
         {
-            "chrome" => DriverFactory.GetChromeDriver(downloadPath),
+            "chrome" => DriverFactory.GetChromeDriver(),
             _ => throw new Exception("This browser type didn't find")
         };
 
