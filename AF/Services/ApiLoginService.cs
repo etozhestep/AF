@@ -13,9 +13,10 @@ public class ApiLoginService
 
     public string AuthenticateUser(UserModel model)
     {
-        var request = new RestRequest("user/login", Method.Post);
+        var request = new RestRequest("/uat/sso/oauth/token", Method.Post);
         request.AddJsonBody(new
         {
+            grant_type = "password",
             login = model.Email,
             password = model.Pass
         });

@@ -1,7 +1,15 @@
 using AF.BaseEntities;
+using Allure.NUnit.Attributes;
 
-namespace AF.Tests;
+namespace AF.Tests.Ui;
 
+[TestFixture]
+[AllureParentSuite("User")]
+[AllureSuite("UserPopup")]
+[Category("UI")]
+[Category("User")]
+[Category("Userpoup")]
+[Category("Smoke")]
 public class UserPopupTests : BaseTest
 {
     [SetUp]
@@ -11,6 +19,9 @@ public class UserPopupTests : BaseTest
     }
 
     [Test]
+    [AllureSubSuite("Open user popup")]
+    [Category("Positive")]
+    [AllureDescription("Open user popup")]
     public void UserPopup_OpenPopup_PopupIsDisplayed()
     {
         LaunchesPage.SideBar.OpenUserPopup();
@@ -19,6 +30,9 @@ public class UserPopupTests : BaseTest
     }
 
     [Test]
+    [AllureSubSuite("Popup buttons")]
+    [Category("Positive")]
+    [AllureDescription("Open user popup")]
     public void UserPopup_CheckPopupButton_AllButtonsDisplayed()
     {
         LaunchesPage.SideBar.OpenUserPopup();
@@ -35,6 +49,9 @@ public class UserPopupTests : BaseTest
     }
 
     [Test]
+    [AllureSubSuite("Open user profile")]
+    [Category("Positive")]
+    [AllureDescription("Open user profile from user popup")]
     public void UserPopup_CheckProfileButton_ProfilePageOpened()
     {
         const string expectedProfileTitle = "User profile";

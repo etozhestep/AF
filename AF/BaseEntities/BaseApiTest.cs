@@ -1,17 +1,23 @@
 using System.Reflection;
 using AF.Steps.Api;
 using Allure.Net.Commons;
+using Allure.NUnit;
+using Allure.NUnit.Attributes;
 using NLog;
 using TestStatus = NUnit.Framework.Interfaces.TestStatus;
 
 namespace AF.BaseEntities;
 
+[Parallelizable(ParallelScope.All)]
+[FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
+[AllureNUnit]
 public class BaseApiTest
 {
     protected readonly Logger Logger = LogManager.GetCurrentClassLogger();
     protected ApiLoginSteps LoginSteps;
 
     [SetUp]
+    [AllureBefore("Setting up API services")]
     public void Setup()
     {
         Logger.Info("Setting up API test...");
@@ -19,6 +25,7 @@ public class BaseApiTest
     }
 
     [TearDown]
+    [AllureAfter("Tearing down logs")]
     public void TearDown()
     {
         try

@@ -9,6 +9,8 @@ namespace AF.Tests.Api;
 
 [TestFixture]
 [AllureParentSuite("Login")]
+[AllureSuite("Login")]
+[AllureSubSuite("API")]
 [Category("API")]
 [Category("Login")]
 [Category("Smoke")]

@@ -7,6 +7,7 @@ namespace AF.Tests.Ui;
 
 [TestFixture]
 [AllureParentSuite("Login")]
+[AllureSubSuite("UI")]
 [Category("UI")]
 [Category("Login")]
 [Category("Smoke")]

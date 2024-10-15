@@ -12,9 +12,6 @@ namespace AF.BaseEntities;
 /// <summary>
 ///     Base class for all tests. Contains common methods and properties. Create instances of Steps and Pages in Setup.
 /// </summary>
-[Parallelizable(ParallelScope.All)]
-[FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
-[AllureNUnit]
 public class BaseTest : BaseApiTest
 {
     private IWebDriver _driver;

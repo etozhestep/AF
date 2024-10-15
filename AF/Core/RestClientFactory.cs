@@ -7,6 +7,6 @@ public class RestClientFactory
 {
     public static RestClient CreateClient()
     {
-        return new RestClient(Configurator.ReadConfiguration().ApiUrl);
+        return new RestClient(Configurator.ReadConfiguration().Url);
     }
 }
