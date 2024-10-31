@@ -1,0 +1,1 @@
+2024-10-31 * Error * Element with locator By.XPath: //input[@placeholder='Login'] is not exist after 00:00:20 seconds
