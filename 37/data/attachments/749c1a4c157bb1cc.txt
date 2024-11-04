@@ -1,0 +1,2 @@
+2024-11-04 * Error * Element with locator By.XPath: //input[@placeholder='Login'] is not exist after 00:00:20 seconds
+2024-11-04 * Error * Element with locator By.XPath: //*[contains(text(),'Bad credentials')] is not exist after 00:00:20 seconds
