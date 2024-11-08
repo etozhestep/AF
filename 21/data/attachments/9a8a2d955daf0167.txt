@@ -1,2 +1,0 @@
-2024-10-19 * Error * Element with locator By.XPath: //div[text()='All launches'] is not exist after 00:00:20 seconds
-2024-10-19 * Error * Element with locator By.XPath: //*[contains(text(),'Bad credentials')] is not exist after 00:00:20 seconds
