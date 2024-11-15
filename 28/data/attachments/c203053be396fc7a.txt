@@ -1,1 +1,0 @@
-2024-10-26 * Error * Element with locator By.XPath: //*[contains(text(),'Bad credentials')] is not exist after 00:00:20 seconds
