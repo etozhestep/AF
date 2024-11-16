@@ -1,8 +1,6 @@
 name: Selenium tests
 
 on:
-  schedule:
-    - cron: '55 13 * * *'
   workflow_dispatch:
 
 env:
